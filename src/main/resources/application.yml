@@ -15,13 +15,13 @@ spring:
     username: root
     password: 3306
     driver-class-name: com.mysql.cj.jdbc.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-      properties:
-        hibernate:
-          dialect: org.hibernate.dialect.MySQL8Dialect # Use MySQL8Dialect for MySQL 8.x
+    jpa:
+      hibernate:
+        ddl-auto: update
+        properties:
+          hibernate:
+            dialect: org.hibernate.dialect.MySQL8Dialect # Use MySQL8Dialect for MySQL 8.x
+      show-sql: true # Optional: to show SQL queries in logs
 
   sql:
     init:
