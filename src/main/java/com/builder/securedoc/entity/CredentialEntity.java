@@ -1,6 +1,5 @@
 package com.builder.securedoc.entity;
 
-
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;

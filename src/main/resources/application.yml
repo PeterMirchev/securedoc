@@ -1,0 +1,64 @@
+spring:
+  profiles:
+    active: ${ACTIVE_PROFILE:dev}
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      fail-on-empty-beans: false
+      close-closeable: true
+      flush-after-write-value: true
+    deserialization:
+      fail-on-unknown-properties: false
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/securedoc
+    username: root
+    password: 3306
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL8Dialect # Use MySQL8Dialect for MySQL 8.x
+
+  sql:
+    init:
+      mode: never
+      continue-on-error: false
+      schema-locations: classpath:/data/schema.sql
+      data-locations: classpath:/data/data.sql
+
+  servlet:
+    multipart:
+      enabled: false
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+
+  mail:
+    host: ${EMAIL_HOST}
+    port: ${EMAIL_PORT}
+    username: ${EMAIL_ID}
+    password: ${EMAIL_PASSWORD}
+    default-encoding: UTF-8
+    properties:
+      mail:
+        mime:
+          charset: UTF
+        smtp:
+          writetimeout: 1000
+          connectiontimeout: 1000
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    verify:
+      host: ${VERIFY_EMAIL_HOST}
+
+server:
+  port: ${CONTAINER_PORT:8080}
+  error:
+    path: /user/error
+    whitelabel:
+      enabled: false
